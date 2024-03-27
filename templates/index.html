@@ -5,10 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Canny Edge Detector</title>
     <link rel="stylesheet" href="{{url_for('static',filename='style.css')}}" />
+    
   </head>
   <body>
     <header>
-      <h1 class="header">Canny Edge Detector</h1>
+      <h1 class="header-title">Canny Edge Detector</h1>
+      <button class="btn upload-btn" >Upload Image</button>
+      <button class="btn upload-btn" >Detect Edges</button>
     </header>
+
+    <section>
+      <div class="container">
+        <div class="image-container">
+          <p class="image-label">Original image</p>
+          <img
+            src="{{url_for('static',filename='images/peppers.png')}}"
+            alt="Placeholder"
+            class="image"
+          />
+        </div>
+        <div><span>&dash; &rAarr;</span></div>
+        <div class="image-container">
+          <p class="image-label">Edges of image</p>
+          <img
+            src="{{url_for('static',filename='images/peppers.png')}}"
+            alt="Placeholder"
+            class="image"
+          />
+        </div>
+      </div>
+    </section>
+
   </body>
 </html>
