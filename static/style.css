@@ -53,8 +53,7 @@ body {
 }
 
 .image {
-  transition: all 6s ease-in;
-  max-width: 500px;
+  transition: all 1s ease-in;
 }
 .image-label {
   font-size: 3rem;

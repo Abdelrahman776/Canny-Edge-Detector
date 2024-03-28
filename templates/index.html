@@ -4,14 +4,24 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Canny Edge Detector</title>
-    <link rel="icon" href="#">
+    <link rel="icon" href="#" />
     <link rel="stylesheet" href="{{url_for('static',filename='style.css')}}" />
   </head>
   <body>
     <header>
       <h1 class="header-title" id="header-title">Canny Edge Detector</h1>
       <div class="btns-container">
-        <button class="btn" id="upload-btn">Upload Image</button>
+        <!-- <form action="/" method="post" enctype="multipart/form-data">
+          <input
+            id="img-input"
+            type="file"
+            name="og"
+            accept="image/*"
+            style="display: none"
+          /> -->
+          <button class="btn" id="upload-btn">Upload Image</button>
+        <!-- </form> -->
+
         <button class="btn" id="edge-btn">Detect Edges</button>
       </div>
     </header>
@@ -22,18 +32,22 @@
         <p class="image-label">Edges of image</p>
       </div>
       <div class="container">
+        <div class="image-container">
+          <img
+            src="static/images/peppers.png"
+            class="image invisible "
+            id="og-image"
+
+            width="500"
+          />
+        </div>
 
         <div class="image-container">
           <img
-            src="{{url_for('static',filename='{{image_path}}')}}"
-            class="image og-image invisible"
-          />
-        </div>
-        
-        <div class="image-container">
-          <img
-            src="{{url_for('static',filename='paint.png')}}"
-            class="image edge-image invisible"
+            src="static/images/processed_image.png"
+            class="image invisible "
+            id="edge-image"
+            width="500"
           />
         </div>
       </div>
