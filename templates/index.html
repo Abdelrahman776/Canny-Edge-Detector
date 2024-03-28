@@ -4,37 +4,40 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Canny Edge Detector</title>
+    <link rel="icon" href="#">
     <link rel="stylesheet" href="{{url_for('static',filename='style.css')}}" />
-    
   </head>
   <body>
     <header>
-      <h1 class="header-title">Canny Edge Detector</h1>
-      <button class="btn upload-btn" >Upload Image</button>
-      <button class="btn upload-btn" >Detect Edges</button>
+      <h1 class="header-title" id="header-title">Canny Edge Detector</h1>
+      <div class="btns-container">
+        <button class="btn" id="upload-btn">Upload Image</button>
+        <button class="btn" id="edge-btn">Detect Edges</button>
+      </div>
     </header>
 
     <section>
+      <div class="btns-container">
+        <p class="image-label">Original image</p>
+        <p class="image-label">Edges of image</p>
+      </div>
       <div class="container">
+
         <div class="image-container">
-          <p class="image-label">Original image</p>
           <img
-            src="{{url_for('static',filename='images/peppers.png')}}"
-            alt="Placeholder"
-            class="image"
+            src="{{url_for('static',filename='{{image_path}}')}}"
+            class="image og-image invisible"
           />
         </div>
-        <div><span>&dash; &rAarr;</span></div>
+        
         <div class="image-container">
-          <p class="image-label">Edges of image</p>
           <img
-            src="{{url_for('static',filename='images/peppers.png')}}"
-            alt="Placeholder"
-            class="image"
+            src="{{url_for('static',filename='paint.png')}}"
+            class="image edge-image invisible"
           />
         </div>
       </div>
     </section>
-
+    <script src="{{url_for('static',filename='script.js')}}"></script>
   </body>
 </html>
