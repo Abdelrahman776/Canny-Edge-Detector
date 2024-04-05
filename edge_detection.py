@@ -2,23 +2,21 @@ import numpy as np
 import cv2
 import matplotlib.pyplot as plt
 
-def canny_edge_detection( image ,lower=-1, upper=-1):
-    # img_path = r"D:/oneDrive/Desktop/Canny-Edge-Detector/static/images/Pyramids2.jpg"  # Using raw string or forward slashes
-    # img = cv2.imread(img_path)  
-    nparr = np.fromstring(image, np.uint8)
-    img = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
+def canny_edge_detection( image_name ,lower=-1, upper=-1):
+    image_path = f"static/images/{image_name}"
+    img_new_name = image_name.split(".")[0]+"_processed.png"
+    img = cv2.imread(image_path)  
     img = preprocess_image(img)
     magnitude, angle = gradient_magnitude_angle(img)
     edges = non_maxima_suppression(magnitude, angle)
     if lower==-1 and upper==-1:
         edges = double_thresholding(edges, low=0.2*np.max(edges), high= 0.7*np.max(edges))
     else:
-        edges = double_thresholding(edges, low=lower, high= upper)
+        edges = double_thresholding(edges, lower, upper)
     edges = check_neighbors(edges)
-    plt.imshow(edges, cmap='gray')
-    plt.axis('off')
-    plt.show()
-    return edges
+    new_path=save_image(edges, img_new_name)
+    return new_path
+    
 
 def gaussian_kernel(size, sigma=1):
     kernel = np.fromfunction(lambda x, y: (1 / (2 * np.pi * sigma ** 2)) * np.exp(-((x - (size - 1) ** 2 + (y - (size - 1) ** 2)) / (2 * sigma ** 2))), (size, size))
@@ -99,4 +97,7 @@ def check_neighbors(edges):
                     edges[x,y] = 0
     return edges
 
-
+def save_image(img ,img_newname):
+    path = "static/images/"+img_newname
+    cv2.imwrite(path, img)
+    return path

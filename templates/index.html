@@ -13,8 +13,8 @@
       <div class="btns-container">
         <form action="/" method="post" enctype="multipart/form-data">
           <input type="file" name="file" accept="image/*" id="img-input" />
-          <button class="btn" type="submit">Upload</button>
-          <!-- <button class="btn" id="upload-btn">Upload Image</button> -->
+          <button class="btn" id="upload-btn" type="submit">Upload</button>
+         
         </form>
 
         <button class="btn" id="edge-btn">Detect Edges</button>
@@ -27,26 +27,26 @@
         <p class="image-label">Edges of image</p>
       </div>
       <div class="container">
-        {% if original_image %}
         <div class="image-container">
+          {% if original_image %}
           <img
-            src="data:image/jpeg;base64,{{ original_image }}"
-            class="image "
+            src="static/images/{{ original_image }}"
+            class="image"
             id="og-image"
             width="500"
           />
+          {% endif %}
         </div>
- {% endif %}
- {% if filtered_image %}
         <div class="image-container">
+          {% if filtered_image %}
           <img
-            src="data:image/jpeg;base64,{{ filtered_image }}"
+            src="{{filtered_image}}"
             class="image invisible"
             id="edge-image"
             width="500"
           />
+          {% endif %}
         </div>
-         {% endif %}
       </div>
     </section>
     <script src="{{url_for('static',filename='script.js')}}"></script>
