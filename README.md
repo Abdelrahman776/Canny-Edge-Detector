@@ -1,6 +1,6 @@
 
 # Canny Edge Detector
-This is a simple web application built using Flask, HTML, CSS, and JavaScript to demonstrate the Canny Edge Detection algorithm. The application allows users to upload an image, and then perform edge detection on it using the Canny Edge Detector algorithm.
+This is a simple web application built using Flask, HTML, CSS, and JavaScript to implement  the Canny Edge Detection algorithm from scratch. The application allows users to upload an image, and then perform edge detection on it using the Canny Edge Detector algorithm.
 
 ![alt text](demo.gif)
 ## How to Use:
