@@ -23,8 +23,11 @@ def upload_detect():
             # new_path=canny_edge_detection(image_name,50,150) # edge detection manually
             img_new_name = image_name.split(".")[0]+"_processed.png"
             new_path="static/images/"+img_new_name
-            
-            edge=cv2.Canny(cv2.imread("static/images/"+image_name),100,250)
+            input_image=cv2.imread("static/images/"+image_name)
+            low_threshold = 0.2*np.max(input_image)
+            high_threshold = 0.7*np.max(input_image)
+
+            edge=cv2.Canny(input_image,low_threshold,high_threshold)
             cv2.imwrite(new_path,edge)
             
         return render_template('index.html', original_image=image_name,filtered_image=new_path)
